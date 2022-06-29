@@ -1,16 +1,16 @@
 #include<bits/stdc++.h>
-
+#define ll long long
 using namespace std;
 
 long long a, n, m , mod;
 
 long long power(long long a, long long b){
-	if (b == 0) return 1;
+	if (b == 0) return 1%mod;
 	long long s = power(a,b/2);
-	s = s * s % mod;
+	ll t = s * s % mod;
 	if (b % 2 == 0 )
-		return s;
-	return s * (a % mod) % mod; 
+		return t;
+	return t * (a % mod) % mod; 
 } 
 
 long long pt(long long a, long long b) {
@@ -23,8 +23,20 @@ long long pt(long long a, long long b) {
 
 int main() {
 	cin >> a >> n >> m;
-
+	 
 	mod = m;
-	cout << pt(a, n);
+
+	if ( n==1 ){
+		cout << a%mod ;
+		return 0;
+	}
+
+	long long s = power(a,a); 
+
+	for ( ll i=1;i<=n-2;i++ ){
+		power ( a,s );
+		cout << s << "\n";
+	}
+	cout << s;
 }
 

@@ -17,26 +17,27 @@ bool find(long long x, long long y)
 int main()
 {
     cin >> x >> y;
-    int l = y, r = 2e9, mid;
+    int l = y, r = 2e9, mid, t;
     while (l <= r)
     {
         mid = (r + l) / 2;
         if (find(x, mid))
             l = mid + 1;
         else
-            r = mid - 1;
+            r = mid - 1, t = mid;
     }
-    long long t = r;
     l = y * -1, r = 2e9, mid;
+    long long b;
     while (l <= r)
     {
         mid = (r + l) / 2;
         if (find(x, mid * -1))
             l = mid + 1;
         else
-            r = mid - 1;
+            r = mid - 1, b = mid;
     }
-    long long b = r * -1;
+    b *= -1;
+    long long phai = r;
     l = x, r = 2e9, mid;
     while (l <= r)
     {
@@ -44,9 +45,9 @@ int main()
         if (find(mid, y))
             l = mid + 1;
         else
-            r = mid - 1;
+            r = mid - 1, phai = mid;
     }
-    long long phai = r;
+    long long trai = r * -1;
     l = x * -1, r = 2e9, mid;
     while (l <= r)
     {
@@ -54,8 +55,8 @@ int main()
         if (find(mid * -1, x))
             l = mid + 1;
         else
-            r = mid - 1;
+            r = mid - 1, trai = mid;
     }
-    long long trai = r * -1;
-    cout << "answer " << trai << " " << b << " " << phai << " " << t << endl;
+    trai *= -1;
+    cout << "answer " << trai - 1<< " " << b - 1<< " " << phai - 1 << " " << t - 1<< endl;
 }
