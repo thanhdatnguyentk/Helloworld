@@ -5,7 +5,7 @@
 class DSPhanSo
 {
 private:
-    PhanSo *p = new PhanSo[100];
+    PhanSo *p;
     int n;
 
 public:
