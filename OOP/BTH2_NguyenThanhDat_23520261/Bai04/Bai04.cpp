@@ -13,18 +13,12 @@ int main(){
     cout<< " Nhap so ban can tim";
     cin >> x;
     cout << "So lan xuat hien cua " << x << " trong mang: " << mang.DemSoLanXuatHien(x) << endl;
-
-    // Check if the array is in ascending order
     if (mang.KiemTraTangDan()) {
         cout << " Mang tang dan." << endl;
     } else {
         cout << " Mang khong tang dan." << endl;
     }
-
-    // Find the smallest odd number in the array
     cout << " Phan le nho nhat trong mang: " << mang.TimPhanLeNhoNhat() << endl;
-
-    // Find the largest prime number in the array
     cout << " So nguyen to lon nhat trong mang: " << mang.TimSoNguyenToLonNhat() << endl;
 }
    
