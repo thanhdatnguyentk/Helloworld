@@ -204,27 +204,9 @@ void binarySearch(pair<string, int> a[], string x, int n){
 }
 
 void binarySearch(int a[], int x, int n){
-    int left = 0, right = n - 1;
+    int left = 0, right = n - 1, mid;
     while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (a[mid] == x) {
-            cout << 1 << endl;
-            return;
-        }
-        if (a[mid] < x) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }   
-    }
-    cout << "0" << endl;
-    return;
-}
-
-void binarySearch(string a[], string x, int n){
-    int left = 0, right = n - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
+         mid = left + (right - left) / 2;
         if (a[mid] == x) {
             cout << mid << endl;
             return;
@@ -235,21 +217,76 @@ void binarySearch(string a[], string x, int n){
             right = mid - 1;
         }   
     }
+    cout << mid + 1 << endl;
+    return;
+}
+void binarySearchRevese(int a[], int x, int n){
+    int left = 0, right = n - 1, mid;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (a[mid] == x) {
+            cout << 1 << endl;
+            return;
+        }
+        if (a[mid] > x) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }   
+    }
+    cout << "0" << endl;
+    return;
+}
+
+void binarySearch(string a[], string x, int n){
+    int left = 0, right = n - 1, mid;
+    while (left <= right) {
+         mid = left + (right - left) / 2;
+        if (a[mid] == x) {
+            cout << mid << endl;
+            return;
+        }
+        if (a[mid] < x) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }   
+    }
+    cout << mid << endl;
+    return;
+}
+void binarySearchRevese(string a[], string x, int n){
+    int left = 0, right = n - 1;
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (a[mid] == x) {
+            cout << mid << endl;
+            return;
+        }
+        if (a[mid] > x) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }   
+    }
     cout << "-1" << endl;
     return;
 }
+
 
 int main() {
     
     int n;
     int a[1000] , x;
     pair<string, int> b[1000];
+    string d[1000];
     string c;
     cin >> n;
     for (int i = 0; i < n; i++) {
-        cin >> a[i];
+        cin >> d[i];
     }
-    cin >> x;
-    binarySearch(a, x, n);
-    return 0;
+    selectionSortString(d, n);
+    for (int i = 0; i < n; i++) {
+        cout << d[i] << endl;
+    }
 }
