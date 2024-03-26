@@ -272,6 +272,18 @@ void binarySearchRevese(string a[], string x, int n){
     cout << "-1" << endl;
     return;
 }
+void selectionSortPair(pair<string, int> a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j < n; j++) {
+            if (a[j].first < a[minIndex].first) {
+                minIndex = j;
+            }
+        }
+        swap(a[i], a[minIndex]);
+    }
+}
+
 
 
 int main() {
@@ -285,6 +297,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         cin >> d[i];
     }
+    selectionSortPair(b, n);
     selectionSortString(d, n);
     for (int i = 0; i < n; i++) {
         cout << d[i] << endl;
