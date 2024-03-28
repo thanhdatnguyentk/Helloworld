@@ -6,14 +6,15 @@
     "configurations": [
         {
             "name": "(Windows) Launch",
-            "type": "cppvsdbg",
+            "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
-            "console": "integratedTerminal",
+            // Remove the "console" property
+            // "console": "integratedTerminal",
             "preLaunchTask": "C/C++: g++.exe build active file"
         }
     ]
