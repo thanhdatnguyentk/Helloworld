@@ -4,6 +4,9 @@
         "ostream": "cpp",
         "random": "cpp",
         "istream": "cpp",
-        "*.tcc": "cpp"
+        "*.tcc": "cpp",
+        "atomic": "cpp",
+        "chrono": "cpp",
+        "iterator": "cpp"
     }
 }
