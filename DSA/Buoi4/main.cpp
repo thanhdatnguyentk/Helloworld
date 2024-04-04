@@ -139,54 +139,6 @@ int check(LIST l)
     }
     return count;
 }
-// int pp[10000];
-void printAttemp(LIST l)
-{
-    cout << "So lan xuat hien cua tung phan tu trong danh sach la:" << endl;
-    for (NODE *k = l.pHead; k != NULL; k = k->pNext)
-    {
-        if (pp[k->data.x] == 0)
-        {
-            int count = 1;
-            for (NODE *h = k->pNext; h != NULL; h = h->pNext)
-            {
-                if (h->data.x == k->data.x)
-                {
-                    count++;
-                }
-            }
-            cout << k->data.x << ": " << count << endl;
-            pp[k->data.x] = 1;
-        }
-    }
-}
-
-void split(LIST l, LIST &l1, LIST &l2)
-{
-    CreateList(l1);
-    CreateList(l2);
-    for (NODE *k = l.pHead; k != NULL; k = k->pNext)
-    {
-        if (pp[k->data.x] == 1)
-        {
-            continue;
-        }
-        if (k->data.x % 2 == 0)
-        {
-            pushBack(l1, CreateNode(k->data));
-        }
-        else
-        {
-            pushBack(l2, CreateNode(k->data));
-        }
-        pp[k->data.x] = 1;
-    }
-    cout << "Cac so chan trong danh sach la: ";
-    printList(l1);
-    cout << "Cac so le trong danh sach la: ";
-    printList(l2);
-}
-
 void deleteNode(LIST &l, NODE *p)
 {
     if (p == NULL)
@@ -210,43 +162,6 @@ void deleteNode(LIST &l, NODE *p)
     }
 }
 
-void selection(LIST &l, int n, int p)
-{
-    if (n == 1)
-    {
-        push(l, CreateNode({p}));
-    }
-    else if (n == 2)
-    {
-        pushBack(l, CreateNode({p}));
-    }
-    else if (n == 3)
-    {
-        NODE *k = l.pHead;
-        while(k != NULL)
-        {
-            NODE *h = k->pNext;
-            if(k->data.x == p)
-            {
-                deleteNode(l, k);
-            }
-            k = h;
-        }
-    }
-    else if (n == 4)
-    {
-        cout << check(l) << endl;
-    }
-    else if (n == 5)
-    {
-        printAttemp(l);
-    }
-    else if (n == 6)
-    {
-        LIST l1, l2;
-        split(l, l1, l2);
-    }
-}
 void search(LIST l, int x)
 {
     int count = 0;
@@ -259,6 +174,25 @@ void search(LIST l, int x)
             cout << k->data.x << endl;
             return;
         }   
+    }
+}
+void HoanDoi(LIST &l, NODE *p, NODE *q)
+{
+    if (p == NULL || q == NULL)
+    {
+        return;
+    }
+    DATA temp = p->data;
+    p->data = q->data;
+    q->data = temp;
+}
+
+void BienDoi(LIST &l){
+    NODE *p = l.pHead;
+    NODE *q = l.pTail;
+    while(p != NULL && p != q){
+        HoanDoi(l, p, p->pNext);
+        p = p->pNext->pNext;
     }
 }
 
@@ -287,6 +221,6 @@ int main()
         pushBack(l, CreateNode(data));
         cin >> n;
     }
-    int m = size(l) / 2 + 1;
-    search(l, m);
+    BienDoi(l);
+    printList(l);
 }
