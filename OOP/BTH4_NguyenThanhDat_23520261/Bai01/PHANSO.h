@@ -36,6 +36,7 @@ public:
     PhanSo operator++(int);
     PhanSo operator--(int);
     // toan tu nhap xuat
+    PhanSo chia(PhanSo ps);
     friend istream &operator>>(istream &is, PhanSo &ps)
     {
         cout << "Nhap tu so: ";
@@ -54,6 +55,15 @@ public:
     // Ham huy
     ~PhanSo();
 };
+PhanSo PhanSo::chia(PhanSo ps)
+{
+    PhanSo temp;
+    temp.TuSo = new int;
+    temp.MauSo = new int;
+    *temp.TuSo = *TuSo * *ps.MauSo;
+    *temp.MauSo = *MauSo * *ps.TuSo;
+    return temp;
+}
 // Ham gan
 PhanSo& PhanSo::operator=(const PhanSo &ps)
 {
